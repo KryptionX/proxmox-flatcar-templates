@@ -49,7 +49,13 @@ required_vars=(
 
 missing_vars=()
 for var in "${required_vars[@]}"; do
-  if [[ -z "${!var}" || "${!var}" == *"your-"* || "${!var}" == *"AAAAC3"* ]]; then
+  if [[ -z "${!var}" || "${!var}" == *"your-"* ]]; then
+    missing_vars+=("$var")
+  elif [[ "$var" == "SSH_PUBLIC_KEY" && "${!var}" == *"AAAAC3... your-actual-ssh-key"* ]]; then
+    # Check for the specific placeholder text, not just AAAAC3
+    missing_vars+=("$var")
+  elif [[ "$var" == "USER_PASSWORD_HASH" && "${!var}" == *'$1$salt$your-actual-password-hash'* ]]; then
+    # Check for the specific placeholder text
     missing_vars+=("$var")
   fi
 done
