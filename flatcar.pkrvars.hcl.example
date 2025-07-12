@@ -1,0 +1,77 @@
+variable "node" {
+  description = "Proxmox node name"
+  type        = string
+  default     = "example-node"
+}
+
+variable "proxmox_url" {
+  description = "Proxmox server IP/hostname"
+  type        = string
+  default     = "192.168.1.1"
+}
+
+variable "username" {
+  description = "Proxmox API username"
+  type        = string
+  default     = "user@pam!user"
+}
+
+variable "token" {
+  description = "Proxmox API token"
+  type        = string
+  default     = "12345678-1234-1234-1234-123456789012"
+}
+
+variable "clone_vm_id" {
+  description = "ID of the Flatcar base template VM to clone"
+  type        = number
+  default     = 9001  # Created by create_flatcar_template.sh
+}
+
+variable "vm_id" {
+  description = "ID for the new Flatcar template"
+  type        = number
+  default     = 9002
+}
+
+variable "cipassword" {
+  description = "Password for core user (optional, SSH keys preferred)"
+  type        = string
+  default     = "your-secure-password"
+}
+
+variable "ciuser" {
+  description = "Default user for Flatcar (should be 'core')"
+  type        = string
+  default     = "core"
+}
+
+variable "disk_stor" {
+  description = "Proxmox storage pool for disks"
+  type        = string
+  default     = "local"
+}
+
+variable "ipconfig" {
+  description = "Cloud-Init IP configuration"
+  type        = string
+  default     = "gw=192.168.1.1,ip=192.168.1.101/24"
+}
+
+variable "ssh_username" {
+  description = "SSH username for Packer connection"
+  type        = string
+  default     = "core"
+}
+
+variable "template_name" {
+  description = "Name for the final Flatcar template"
+  type        = string
+  default     = "flatcar-container-template"
+}
+
+variable "insecure_skip_tls_verify" {
+  description = "Skip TLS verification for Proxmox API (not recommended for production)"
+  type        = bool
+  default     = false
+} 

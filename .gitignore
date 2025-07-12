@@ -1,0 +1,20 @@
+# Sensitive configuration files - DO NOT COMMIT
+flatcar-variables.env
+flatcar.pkrvars.hcl
+flatcar-config-processed.bu
+cloud-init-example.yaml
+docker-nfs-analysis-prompt.md
+docker-nfs-mount-analysis-report.md
+
+# Generated ignition files
+*.ign
+
+# Downloaded images
+*.img
+*.img.bz2
+
+# Temporary files
+.DS_Store
+Thumbs.db
+*.tmp
+*.log
